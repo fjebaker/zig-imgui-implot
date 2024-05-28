@@ -4,12 +4,6 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    // const use_freetype = b.option(bool, "use_freetype", "Use Freetype") orelse false;
-
-    // const mach_dep = b.dependency("mach", .{
-    //     .target = target,
-    //     .optimize = optimize,
-    // });
     const imgui_dep = b.dependency("imgui", .{
         .target = target,
         .optimize = optimize,
