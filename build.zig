@@ -46,7 +46,7 @@ pub fn build(b: *std.Build) void {
     implot_lib.addIncludePath(imgui_dep.path("."));
     implot_lib.addIncludePath(implot_dep.path("."));
     implot_lib.addCSourceFiles(.{ .root = implot_dep.path("."), .files = &.{
-        "implot.cpp", "implot_items.cpp",
+        "implot.cpp", "implot_items.cpp", "implot_demo.cpp",
     } });
     implot_lib.addIncludePath(.{ .path = "src" });
     implot_lib.addCSourceFiles(.{ .files = &.{
