@@ -4,9 +4,11 @@
 
     .dependencies = .{
         .implot = .{
+            .url = "https://github.com/epezent/implot/archive/1f7a8c0314d838a76695bccebe0f66864f507bc0.tar.gz",
             .hash = "1220781bd0617c107617cc19d446801f519d5a29fc4beee9438c527f74af8caf483f",
         },
         .imgui = .{
+            .url = "https://github.com/ocornut/imgui/archive/e391fe2e66eb1c96b1624ae8444dc64c23146ef4.tar.gz",
             .hash = "1220bc6b9daceaf7c8c60f3c3998058045ba0c5c5f48ae255ff97776d9cd8bfc6402",
         },
     },
