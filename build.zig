@@ -19,12 +19,15 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     imgui_lib.linkLibC();
-    imgui_lib.addIncludePath(.{ .path = "src" });
+    imgui_lib.addIncludePath(b.path("src"));
     imgui_lib.addIncludePath(imgui_dep.path("."));
-    imgui_lib.addCSourceFiles(.{ .root = imgui_dep.path("."), .files = &.{
-        "imgui.cpp",      "imgui_widgets.cpp", "imgui_tables.cpp",
-        "imgui_draw.cpp", "imgui_demo.cpp",
-    } });
+    imgui_lib.addCSourceFiles(.{
+        .root = imgui_dep.path("."),
+        .files = &.{
+            "imgui.cpp",      "imgui_widgets.cpp", "imgui_tables.cpp",
+            "imgui_draw.cpp", "imgui_demo.cpp",
+        },
+    });
     imgui_lib.addCSourceFiles(.{ .files = &.{
         "src/cimgui.cpp",
     } });
@@ -39,10 +42,13 @@ pub fn build(b: *std.Build) void {
     implot_lib.linkLibC();
     implot_lib.addIncludePath(imgui_dep.path("."));
     implot_lib.addIncludePath(implot_dep.path("."));
-    implot_lib.addCSourceFiles(.{ .root = implot_dep.path("."), .files = &.{
-        "implot.cpp", "implot_items.cpp", "implot_demo.cpp",
-    } });
-    implot_lib.addIncludePath(.{ .path = "src" });
+    implot_lib.addCSourceFiles(.{
+        .root = implot_dep.path("."),
+        .files = &.{
+            "implot.cpp", "implot_items.cpp", "implot_demo.cpp",
+        },
+    });
+    implot_lib.addIncludePath(b.path("src"));
     implot_lib.addCSourceFiles(.{ .files = &.{
         "src/cimplot.cpp",
     } });
@@ -52,9 +58,9 @@ pub fn build(b: *std.Build) void {
     const mod = b.addModule("zig-imgui", .{
         .target = target,
         .optimize = optimize,
-        .root_source_file = .{ .path = "src/imgui_wrapper.zig" },
+        .root_source_file = b.path("src/imgui_wrapper.zig"),
     });
     mod.linkLibrary(imgui_lib);
     mod.linkLibrary(implot_lib);
-    mod.addIncludePath(.{ .path = "src" });
+    mod.addIncludePath(b.path("src"));
 }
